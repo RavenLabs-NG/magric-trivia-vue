@@ -132,9 +132,9 @@ export default {
                 "You are not authorized to perform this action or view page";
 
             alert(msg);
+            return Promise.reject(error);
           }
           const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
         }
         return data;
       });
