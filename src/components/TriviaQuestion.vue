@@ -18,10 +18,10 @@
 
     <div class="text-center mt-4 border-t-2">
       <div v-if="total == index + 1">
-        <button @click="showNext" class="w-full bg-white border-2 border-green text-green text-white py-4 rounded-full mt-4">SUBMIT ANSWERS</button>
+        <button @click="showNext" class="w-full bg-white border-2 border-green text-green py-4 rounded-full mt-4">SUBMIT ANSWERS</button>
       </div>
       <div v-else>
-        <button @click="showNext" :disabled="answer == null" class="w-full bg-white border-2 border-green text-green text-white py-4 rounded-full mt-4">NEXT QUESTION</button>
+        <button @click="showNext" :disabled="answer == null" class="w-full bg-white border-2 border-green text-green py-4 rounded-full mt-4">NEXT QUESTION</button>
       </div>
     </div>
   </div>
