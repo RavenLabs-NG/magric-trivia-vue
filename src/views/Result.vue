@@ -1,13 +1,19 @@
 <template>
-    <div id="result">
-        <img alt="Trivia" src="@/assets/images/logo.jpg" />
-        <p>You scored:</p>
-        <p class="message">{{result.score}}</p>
-        <p v-if="result.win">And won {{ result.prize }}!</p>
-        <p v-if="result.win && result.prizeType == 'CASH'">You will be contacted shortly with instructions to collect your cash gift. Congratulations!</p>
-        <p v-if="result.win && result.prizeType != 'CASH'">You will receive your {{ result.prizeType }} shortly.</p>
-        <p v-if="!result.win">You can try again tommorow and stand a chance to win exiting prizes.</p>
-        <a @click="backToHome" class="button">Thank You</a>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-green px-5">
+        <img
+      src="@/assets/images/logo.jpg"
+      alt="Total Trivia Logo"
+      class="w-full mb-8 rounded"
+    />
+        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center">
+        <p class="text-gray-600 text-2xl mb-4">You scored:</p>
+        <p class="text-3xl font-bold mb-4">{{result.score}}</p>
+        <p v-if="result.win">and won<br><span class="text-green text-5xl mt-2 mb-2"> {{ result.prize }}</span></p>
+        <p v-if="result.win && result.prizeType == 'CASH'" class="text-gray-600 text-1xl mt-2 mb-8">You will be contacted shortly with instructions to collect your cash gift. Congratulations!</p>
+        <p v-if="result.win && result.prizeType != 'CASH'" class="text-gray-600 text-1xl mt-2 mb-8">You will receive your {{ result.prizeType.toLowerCase() }} on your registered phone number shortly.</p>
+        <p v-if="!result.win" class="text-gray-600 text-1xl mt-2 mb-6">You can try again tommorow and stand a chance to win exiting prizes.</p>
+        <a @click="backToHome" class="btn mt-4 cursor-pointer">CLOSE</a>
+        </div>
     </div>
 </template>
 

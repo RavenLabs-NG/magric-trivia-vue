@@ -1,20 +1,20 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Play from '@/views/Play.vue'
 import Result from '@/views/Result.vue'
+import Index from '@/views/Index.vue'
+import Trivia from '@/views/Trivia.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Index',
+      component: Index
     },
     {
-      path: '/play',
-      name: 'Play',
-      component: Play
+      path: '/trivia',
+      name: 'Trivia',
+      component: Trivia
     },
     {
       path: '/result',
