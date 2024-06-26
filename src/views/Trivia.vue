@@ -24,7 +24,7 @@
       <TriviaQuestion
         :total="questions.length"
         @next="showNext"
-        :class="{ hide: currentQuestion != index }"
+        :class="{ hidden: currentQuestion != index }"
         v-for="(question, index) in questions"
         :index="question.id"
         :key="question.id"
