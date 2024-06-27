@@ -64,8 +64,7 @@ export default {
       headers: this.requestHeaders(),
     };
     // load questions
-    let response = await fetch(
-      import.meta.env.VITE_API_BASE_URL + "/start-trivia",
+    let response = await fetch( "/api/v1/start-trivia",
       requestOptions
     ).then(this.handleResponse);
     console.log(response);
@@ -125,8 +124,7 @@ export default {
         }),
       };
       // load questions
-      let response = await fetch(
-        import.meta.env.VITE_API_BASE_URL + "/submit",
+      let response = await fetch("/api/v1/submit",
         requestOptions
       ).then(this.handleResponse);
 
