@@ -65,7 +65,7 @@ export default {
     };
     // load questions
     let response = await fetch(
-      import.meta.env.VITE_API_BASE_URL + "/api/v1/trivia/start-trivia",
+      import.meta.env.VITE_API_BASE_URL + "/api/v1/trivia/start",
       requestOptions
     ).then(this.handleResponse);
     console.log(response);
