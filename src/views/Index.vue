@@ -49,7 +49,7 @@ export default {
       if (this.msisdn && this.msisdn.trim() != "") {
         this.disableLogin = true;
         let res = await fetch(
-          import.meta.env.VITE_API_BASE_URL + "/login",
+          "./api/v1/login",
           {
             method: "POST",
             body: JSON.stringify({ msisdn: this.msisdn }),
