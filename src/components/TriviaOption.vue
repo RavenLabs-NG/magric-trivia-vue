@@ -1,5 +1,5 @@
 <template>
-    <button @click="select" class="border-2 border-green  drop-shadow-lg py-4 rounded-full">{{ text }}</button>
+    <button @click="select" class="border-2 border-green  drop-shadow-lg py-2">{{ text }}</button>
 </template>
 
 <script>

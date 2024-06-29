@@ -17,27 +17,28 @@
     </div>
 
     <div class="text-center mt-4 border-t-2">
-      <div v-if="total == index + 1">
-        <button @click="showNext" class="w-full bg-white border-2 border-green text-green py-4 rounded-full mt-4">SUBMIT ANSWERS</button>
-      </div>
-      <div v-else>
-        <button @click="showNext" :disabled="answer == null" class="w-full bg-white border-2 border-green text-green py-4 rounded-full mt-4">NEXT QUESTION</button>
-      </div>
+        <LoaderBtn :text="`${total == index + 1 ? 'Submit Answers' : 'Next Question'}`" :loading="isDone" @click="showNext" class="w-full mt-4 mb-4" />
     </div>
   </div>
 </template>
 
 <script>
 import TriviaOption from "./TriviaOption.vue";
+import LoaderBtn from "../components/LoaderBtn.vue";
 export default {
   name: "TriviaQuestion",
   components: {
     TriviaOption,
+    LoaderBtn,
   },
   props: {
     question: Object,
     index: Number,
     total: null,
+    isDone: {
+      type: Boolean,
+      default: false,
+    }
   },
   data: () => {
     return {
@@ -49,7 +50,11 @@ export default {
       this.answer = number;
     },
     showNext: function () {
-      this.$emit("next", this.question.id, this.answer, this.index);
+      if(this.answer != null){
+        this.$emit("next", this.question.id, this.answer, this.index);
+      }else{
+        alert('Please select an option')
+      }
     },
   },
 };

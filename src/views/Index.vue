@@ -1,35 +1,34 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center min-h-screen bg-green px-10 py-5"
+    class="flex flex-col items-center justify-center  mt-20 sm:mt-20 md:mt-56 lg:mt-60 h-max bg-green px-4"
   >
-    <img
-      src="@/assets/images/logo.jpg"
+    <!-- <img
+      src="@/assets/images/welcome.jpg"
       alt="Total Trivia Logo"
       class="w-full mb-8"
-    />
+    /> -->
     <!-- <h1 class="text-white text-3xl font-bold mb-8">M-Agric Trivia</h1> -->
-    <p class="text-white mb-8 text-center font-bold text-md">
+    <p class="text-white mb-8  text-center font-bold text-2xl">
       Welcome to M-Agric Trivia, enter your phone number to play.
     </p>
     <input
       type="text"
       placeholder="Enter your phone number"
-      class="bg-white w-full px-6 py-2 rounded-full"
+      class="bg-white w-full px-6 py-4 rounded-full"
       :value="msisdn"
       :disabled="disableInput"
     />
-    <button
-      :disabled="disableLogin" @click="start"
-      class="bg-white text-green-500 px-6 py-2 rounded-full w-full mt-4 mb-4">
-      Start Trivia
-    </button>
+    <LoaderBtn :text="'Start Trivia'"   :loading="disableLogin" @click="start" class="w-full mt-4 mb-4" />
   </div>
 </template>
 
 <script>
+import LoaderBtn from "../components/LoaderBtn.vue";
 export default {
   name: "Index",
-  components: {},
+  components: {
+    LoaderBtn,
+  },
   data: () => {
     return {
       msisdn: "",

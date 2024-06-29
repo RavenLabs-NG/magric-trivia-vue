@@ -15,15 +15,16 @@
         <p class="text-gray-600 font-bold">Question {{ currentQuestion + 1 }}</p>
         <p class="text-gray-600 font-bold">Time : <span>{{ counter }}</span></p>
       </div>
-      <div class="w-full h-2.5 bg-gray-200 mt-4 mb-4 rounded-full">
+      <div class="w-full h-2.5 bg-green mt-4 mb-4 rounded-full">
         <div
-          class="bg-green w-full h-2.5 rounded-full"
+          class="bg-dark-green w-full h-2.5 rounded-full"
           :style="{ width: `${(counter / duration) * 100}%` }"
         ></div>
       </div>
       <TriviaQuestion
         :total="questions.length"
         @next="showNext"
+        :isDone="done"
         :class="{ hidden: currentQuestion != index }"
         v-for="(question, index) in questions"
         :index="question.id"
@@ -33,18 +34,21 @@
     </div>
 
     <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center" v-else>
-      <p class="text-gray-600 text-2xl mb-4">Loading...</p>
+      <p class="text-gray-600 text-2xl mb-4">Loading questions...</p>
+      <LoaderBtn :text="'Close'" :loading="true" class="w-full mb-4 text-white mt-4" />
     </div>
   </div>
 </template>
 
 <script>
 import TriviaQuestion from "../components/TriviaQuestion.vue";
+import LoaderBtn from "../components/LoaderBtn.vue";
 import store from "@/store";
 export default {
   name: "Trivia",
   components: {
     TriviaQuestion,
+    LoaderBtn,
   },
   data() {
     return {
@@ -54,6 +58,7 @@ export default {
       currentQuestion: 0,
       answers: [],
       counter: 20,
+      done: false,
       duration: 10,
       routeFlag: true,
     };
@@ -98,6 +103,7 @@ export default {
       } else {
         // end session
         if (this.routeFlag) {
+        this.done = true;
           this.submitAnswers();
         }
       }

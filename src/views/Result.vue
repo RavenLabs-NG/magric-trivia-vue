@@ -1,10 +1,5 @@
 <template>
     <div class="flex flex-col items-center justify-center min-h-screen bg-green px-5">
-        <img
-      src="@/assets/images/logo.jpg"
-      alt="Total Trivia Logo"
-      class="w-full mb-8 rounded"
-    />
         <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md text-center">
         <p class="text-gray-600 text-2xl mb-4">You scored:</p>
         <p class="text-3xl font-bold mb-4">{{result.score}}</p>
@@ -12,7 +7,8 @@
         <p v-if="result.win && result.prizeType == 'CASH'" class="text-gray-600 text-1xl mt-2 mb-8">You will be contacted shortly with instructions to collect your cash gift. Congratulations!</p>
         <p v-if="result.win && result.prizeType != 'CASH'" class="text-gray-600 text-1xl mt-2 mb-8">You will receive your {{ result.prizeType.toLowerCase() }} on your registered phone number shortly.</p>
         <p v-if="!result.win" class="text-gray-600 text-1xl mt-2 mb-6">You can try again tommorow and stand a chance to win exiting prizes.</p>
-        <a @click="backToHome" class="btn mt-4 cursor-pointer">CLOSE</a>
+        
+        <LoaderBtn :text="'Close'" @click="backToHome" class="w-full mb-4" />
         </div>
     </div>
 </template>
@@ -20,8 +16,10 @@
 <script>
 import store from '@/store';
 import router from '@/router';
+import LoaderBtn from "../components/LoaderBtn.vue";
 export default {
     name: "Result",
+    components: {LoaderBtn},
     data: function() {
         return {
             result : {}
