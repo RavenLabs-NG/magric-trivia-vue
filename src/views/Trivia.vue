@@ -24,7 +24,7 @@
       <TriviaQuestion
         :total="questions.length"
         @next="showNext"
-        :isDone="done"
+        :isDone="isDone"
         :class="{ hidden: currentQuestion != index }"
         v-for="(question, index) in questions"
         :index="question.id"
@@ -62,6 +62,11 @@ export default {
       duration: 10,
       routeFlag: true,
     };
+  },
+  computed: {
+    isDone: function () {
+      return (this.currentQuestion + 1 == this.questions.length) && this.done;
+    },
   },
   created: async function () {
     const requestOptions = {
